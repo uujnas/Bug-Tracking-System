@@ -1,0 +1,30 @@
+// Place all the styles related to the dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+$background : rgb(245, 245, 245);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: $background;
+}
+
+header {
+  .heading {
+    font-size: 5em;
+    font-weight: 600;
+    text-align: center;
+    padding: 150px 150px 10px 120px;
+  }
+
+  .button-sign-in {
+    text-align: center;
+    font-size: 1em;
+  }
+}
