@@ -4,7 +4,7 @@
       <div class="col-md-12 text-center"> <%# <%= image_tag ("bug_tracker.jpeg"), class: 'banner' %> <h1
           class="heading">BUG TRACKING <span>SYSTEM </span> </h1>
         <% if user_signed_in? %>
-        <%= link_to 'SIGN OUT', destroy_user_session_path, class:"btn btn-danger button-sign-out" %>
+        <%= link_to 'SIGN OUT', destroy_user_session_path, :method => :delete,  class:"btn btn-danger button-sign-out" %>
         <% else %>
         <%= link_to 'SIGN IN', new_user_session_path, class:"btn btn-success button-sign-in" %>
         <% end %>
