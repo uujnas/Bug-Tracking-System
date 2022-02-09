@@ -1,0 +1,9 @@
+<% if current_user.admin? %>
+  <p>Welcome <%= current_user.user_name %></p>
+  <p>Hello this is only accessible by admin page
+<% elsif current_user.project_manager? %>
+  <p>Welcome <%= current_user.user_name %></p>
+  <p>Hello this is only accessible by project_manager </p>
+  <% else %>
+  <p>Hello developer</p>
+<% end %>
