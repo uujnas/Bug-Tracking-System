@@ -1,9 +1,12 @@
 <% if current_user.admin? %>
-  <p>Welcome <%= current_user.user_name %></p>
-  <p>Hello this is only accessible by admin page
+  <%= (image_tag current_user.profile_pic,style:"height:220px;") if current_user.profile_pic.attached? %>
+  <p>Welcome admin, <%= current_user.user_name %></p>
+  <p>Hello this is only accessible by admin page</p>
 <% elsif current_user.project_manager? %>
-  <p>Welcome <%= current_user.user_name %></p>
+  <%= (image_tag current_user.profile_pic,style:"height:220px;") if current_user.profile_pic.attached? %>
+  <p>Welcome project_manager, <%= current_user.user_name %></p>
   <p>Hello this is only accessible by project_manager </p>
-  <% else %>
-  <p>Hello developer</p>
+<% else %>
+  <%= (image_tag current_user.profile_pic,style:"height:220px;") if current_user.profile_pic.attached? %>
+  <p>Welcome developer, Hello developer</p>
 <% end %>
