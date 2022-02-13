@@ -1,27 +1,30 @@
-<% if @project.errors.any? %>
-<%= @project.errors.full_messages %>
-<% end %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="p-3">Add project</h2>
-      <%= form_for @project do |f| %>
-      <div class="col-md-6 col-lg-6 pt-2">
-        <%= f.label :title, "Title of project" %>
+<div class="modal-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%= form_for @project, remote: true do |f| %>
+        <div class="col-md-12 col-lg-12 pt-2">
+          <%= f.label :title, "Title of project" %>
+        </div>
+        <div class="col-md-12 col-lg-12 py-2">
+          <%= f.text_field :title,class: "form-control", placeholder: "project name goes here" %>
+        </div>
+        <div class="col-md-12 col-lg-12 pt-2">
+          <%= f.label :description, "project description" %>
+        </div>
+        <div class="col-md-12 col-lg-12 py-2">
+          <%= f.text_area :description,class: "form-control",rows: "5", placeholder: "project description" %>
+        </div>
+
       </div>
-      <div class="col-md-6 col-lg-6 py-2">
-        <%= f.text_field :title,class: "form-control", placeholder: "project name goes here" %>
-      </div>
-      <div class="col-md-6 col-lg-6 pt-2">
-        <%= f.label :description, "project description" %>
-      </div>
-      <div class="col-md-6 col-lg-6 py-2">
-        <%= f.text_area :description,class: "form-control",rows: "5", placeholder: "project description" %>
-      </div>
-      <div class="col-md-6 col-lg-6 py-2">
-        <%= f.submit "Add", class: "btn btn-success" %>
-      </div>
-      <% end %>
     </div>
   </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary close-modal" data-bs-dismiss="modal">Close</button>
+  <div class="col-md-12 col-lg-12 py-2">
+    <%= f.submit "Submit", class: "btn btn-success" %>
+  </div>
+  <% end %>
+</div>
 </div>

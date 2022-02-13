@@ -4,7 +4,8 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy]
 
   def index
-    @projects = Project.all
+    @projects = Project.all.order(title: :asc)
+    @project = Project.new
   end
 
   def show; end
@@ -17,13 +18,17 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    if @project.save
-      redirect_to project_url(@project), notice: 'project was successfully created'
-    else
-      render :new
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: "Successfully created" }
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
     end
   end
-
+        
   def update
     if @project.update(project_params)
       redirect_to project_url(@project), notice: 'project is successfully created'

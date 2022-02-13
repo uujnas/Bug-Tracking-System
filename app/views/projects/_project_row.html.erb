@@ -1,0 +1,13 @@
+  <tbody id="projectTable">
+    <%if @projects.present? %>
+    <tr id="projectRow_<%= @project.id %>">
+      <% @projects.each_with_index do |project,index|%>
+      <th scope="row"><%= index+1 %></th>
+      <td><%= project.title %></td>
+      <td><%= link_to 'edit', edit_project_path(project), class: "text-success" %>
+      <td><%= link_to 'delete', project, method: :delete, data: {confirm: 'Are you sure?'}, class:"text-danger" %>
+    </tr>
+    <% end %>
+    <% end %>
+
+  </tbody>
