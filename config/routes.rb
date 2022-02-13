@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     confirmations: 'confirmations'
   }
   resources :projects
+  resources :role_dashboards
   # authenticated :user do
   #   root :to => 'projects#index'
   # end
