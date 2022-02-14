@@ -1,6 +1,6 @@
 <% if @project.errors.any? %>
   alert("Invalid/Empty data added")
-<% else %>
-  $("#projectTable").prepend("<%= escape_javascript render('project_row', project: @project)%>")
+<% else %>  
+  $("#projectTable").prepend("<%= j render('project_row', project: @project)%>")
   $(".close-modal").click();
 <% end %>

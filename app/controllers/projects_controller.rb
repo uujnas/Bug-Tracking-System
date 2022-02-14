@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-
   before_action :set_project, only: %i[show edit update destroy]
 
   def index
@@ -18,6 +17,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @projects = Project.all.order(title: :asc)
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Successfully created' }
@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @projects = Project.all.order(title: :asc)
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to projects_url, notice: 'Successfully updated project'}
@@ -43,8 +44,9 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
+    @projects = Project.all.order(title: :asc)
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: ' project is successfully deleted'}
+      format.html { redirect_to projects_url, notice: 'project is successfully deleted' }
       format.js
     end
   end
