@@ -44,7 +44,6 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    @projects = Project.all.order(title: :asc)
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'project is successfully deleted' }
       format.js
