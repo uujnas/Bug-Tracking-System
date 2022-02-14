@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: "Successfully created" }
+        format.html { redirect_to @project, notice: 'Successfully created' }
         format.js
       else
         format.html { render :new }
@@ -30,10 +30,14 @@ class ProjectsController < ApplicationController
   end
         
   def update
-    if @project.update(project_params)
-      redirect_to project_url(@project), notice: 'project is successfully created'
-    else
-      render :edit
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to projects_url, notice: 'Successfully updated project'}
+        format.js
+      else
+        format.js
+        format.html{ render :edit, status: :unprocessable_entity }
+      end
     end
   end
 

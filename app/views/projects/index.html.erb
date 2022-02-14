@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <%= link_to "Add PROJECT", new_project_path,id: "new_link", class: "btn btn-success",  data: {bs_toggle: 'modal', bs_target: '#exampleModal', remote: true} %>
+      <%= link_to "Add PROJECT", new_project_path,id: "new_link", class: "btn btn-success",  data: {bs_toggle: 'modal', bs_target: '#updateProject', remote: true} %>
       <h2 class="text-cener py-5"> Project</h2>
       <table class="table table-sm">
         <thead>
@@ -19,14 +19,31 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateProject" tabindex="-1" aria-labelledby="updateProjectLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div id="newProjectForm">
+      <div id="editProjectForm">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%# Update Project form%>
+<!-- Modal -->
+<div class="modal fade" id="updateProject" tabindex="-1" aria-labelledby="updateProjectLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateProjectLabel">Add Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="editProjectForm">
         <%= render 'form' %>
       </div>
     </div>

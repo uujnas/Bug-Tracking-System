@@ -1,0 +1,6 @@
+<% if @project.errors.any? %>
+  alert("Invalid/Empty data added")
+<% else %>
+  $("#projectRow_<%= @project.id %>").replaceWith("<%= escape_javascript render('project_row', project: @project)%>")
+  $(".close-modal").click();
+<% end %>
