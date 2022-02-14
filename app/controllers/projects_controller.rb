@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
       end
     end
   end
-        
+
   def update
     respond_to do |format|
       if @project.update(project_params)
@@ -43,7 +43,10 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to projects_url, notice: 'project is successfully deleted'
+    respond_to do |format|
+      format.html { redirect_to projects_url, notice: ' project is successfully deleted'}
+      format.js
+    end
   end
 
   private 
