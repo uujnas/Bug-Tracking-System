@@ -1,4 +1,3 @@
-  <tbody id="projectTable">
     <%if @projects.present? %>
     <tr id="projectRow_<%= @project.id %>">
       <% @projects.each_with_index do |project,index|%>
@@ -10,5 +9,3 @@
     </tr>
     <% end %>
     <% end %>
-
-  </tbody>
