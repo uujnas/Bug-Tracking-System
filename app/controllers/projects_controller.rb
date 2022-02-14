@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @projects = Project.all.order(title: :asc)
+    # @projects = Project.all.order(title: :asc)
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to projects_url, notice: 'Successfully updated project'}
