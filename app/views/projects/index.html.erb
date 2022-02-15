@@ -14,8 +14,8 @@
         </thead>
         <tbody id="projectTable">
           <%if @projects.present? %>
-          <% @projects.each_with_index do |project,index|%>
-          <%= render 'projects/project_row', project: project, index: index %>
+          <% @projects.each_with_index do |project|%>
+          <%= render 'projects/project_row', project: project %>
           <% end %>
           <% end %>
         </tbody>
