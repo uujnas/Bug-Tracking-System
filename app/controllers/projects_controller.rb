@@ -16,7 +16,7 @@ class ProjectsController < RoleDashboardsController
   def edit; end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_user.project.create(project_params)
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Successfully created' }

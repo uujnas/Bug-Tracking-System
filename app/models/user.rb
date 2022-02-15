@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :project
   has_one_attached :profile_pic
   validates :profile_pic, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
