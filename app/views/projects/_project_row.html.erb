@@ -1,0 +1,13 @@
+    <%if @projects.present? %>
+    <% @projects.each_with_index do |project,index|%>
+    <tr id="projectRow_<%= project.id %>">
+      <th scope="row"><%= index+1 %></th>
+      <td><%= project.title %></td>
+      <td>
+        <%= link_to "edit", edit_project_path(project), class:"text-success",  data: {bs_toggle: 'modal', bs_target: '#updateProject', remote: true} %>
+        <%# <td><%= link_to 'edit', edit_project_path(project), class: "text-success" %>
+      <td>
+        <%= link_to 'delete', project, method: :delete, data: {confirm: 'Are you sure?', remote: true}, class:"text-danger" %>
+    </tr>
+    <% end %>
+    <% end %>

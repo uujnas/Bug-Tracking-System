@@ -1,12 +1,53 @@
-<% if current_user.admin? %>
-  <%= (image_tag current_user.profile_pic,style:"height:220px;") if current_user.profile_pic.attached? %>
-  <p>Welcome admin, <%= current_user.user_name %></p>
-  <p>Hello this is only accessible by admin page</p>
-<% elsif current_user.project_manager? %>
-  <%= (image_tag current_user.profile_pic,style:"height:220px;") if current_user.profile_pic.attached? %>
-  <p>Welcome project_manager, <%= current_user.user_name %></p>
-  <p>Hello this is only accessible by project_manager </p>
-<% else %>
-  <%= (image_tag current_user.profile_pic,style:"height:220px;") if current_user.profile_pic.attached? %>
-  <p>Welcome developer, Hello developer</p>
-<% end %>
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to "Add PROJECT", new_project_path,id: "new_link", class: "btn btn-success",  data: {bs_toggle: 'modal', bs_target: '#updateProject', remote: true} %>
+      <h2 class="text-cener py-5"> Project</h2>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">S.N</th>
+            <th scope="col">Title</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+          <tbody id="projectTable">
+        <%= render 'projects/project_row'%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateProject" tabindex="-1" aria-labelledby="updateProjectLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="newProjectForm">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%# Update Project form%>
+<!-- Modal -->
+<div class="modal fade" id="updateProject" tabindex="-1" aria-labelledby="updateProjectLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateProjectLabel">Add Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="editProjectForm">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
