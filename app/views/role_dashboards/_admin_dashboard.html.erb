@@ -1,15 +1,9 @@
 <li>
 <%= link_to 'Project', projects_path() %>
-  <a href="#">Projects</a>
 </li>
-<li class="active">
-  <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bugs</a>
-  <ul class="collapse list-unstyled" id="homeSubmenu">
-    <li>
-      <a href="#">Add </a>
-    </li>
-    <li>
-      <a href="#">Assign </a>
-    </li>
-  </ul>
+<li>
+<%= link_to 'Add Bug', bugs_path() %>
+</li>
+<li>
+<%= link_to 'Assign Bug', bugs_path() %>
 </li>

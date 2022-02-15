@@ -1,5 +1,6 @@
-class Project < ApplicationRecord
+class Bug < ApplicationRecord
   belongs_to :user
-  has_many :bug
+  belongs_to :project
   validates :title, presence: true, uniqueness: true
+
 end
