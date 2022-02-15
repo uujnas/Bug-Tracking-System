@@ -1,3 +1,4 @@
+<% if can? :manage, @current_user %>
 <p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
@@ -55,3 +56,4 @@
     </div>
   </div>
 </div>
+<% end %>

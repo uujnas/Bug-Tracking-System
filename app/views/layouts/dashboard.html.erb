@@ -30,7 +30,7 @@
         <% if current_user.admin? %>
         <%= render 'role_dashboards/admin_dashboard' %>
         <% elsif current_user.project_manager? %>
-        <%= render 'role_dashboards/projectManager' %>
+        <%= render 'role_dashboards/projectManager_dashboard' %>
         <% else %>
         <%= render 'role_dashboards/developer_dashboard'%>
         <% end %>
