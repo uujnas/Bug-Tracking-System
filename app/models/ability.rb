@@ -7,7 +7,8 @@ class Ability
     user ||= User.new
     if user.admin?
       can :manage, :all
-    else
+    elsif user.project_manager?
+      can :manage, Bug 
       # can :manage, Project, user: current_user
       can :read, :all
     end
