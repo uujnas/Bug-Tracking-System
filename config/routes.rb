@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :projects
   resources :role_dashboards
   resources :bugs
+  resources :assign_bugs
+
   # authenticated :user do
   #   root :to => 'projects#index'
   # end

@@ -6,6 +6,7 @@ class BugsController < RoleDashboardsController
 
   def index
     @bugs = Bug.all
+    @assign_bug = AssignBug.new
     # @bug = current_user.bugs.build
   end
 
