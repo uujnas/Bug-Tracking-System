@@ -1,6 +1,8 @@
 class BugsController < RoleDashboardsController
   before_action :authenticate_user!
   before_action :set_bug, only: %i[show edit update destroy]
+  before_action :set_authorization, only: %i[edit update destroy show new create]
+
 
   def index
     @bugs = Bug.all
@@ -45,6 +47,10 @@ class BugsController < RoleDashboardsController
 
   def bug_params
     params.require(:bug).permit(:title, :description, :user_id, :project_id)
+  end
+
+  def set_authorization
+    authorize! :read, @current_user
   end
 
 end
