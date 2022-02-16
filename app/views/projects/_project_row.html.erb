@@ -1,8 +1,11 @@
-    <tr id="projectRow_<%= project.id %>">
-      <td><%= project.title %></td>
-      <td>
-        <%= link_to "edit", edit_project_path(project), class:"text-success",  data: {bs_toggle: 'modal', bs_target: '#updateProject', remote: true} %>
-        <%# <td><%= link_to 'edit', edit_project_path(project), class: "text-success" %>
-      <td>
-        <%= link_to 'delete', project, method: :delete, data: {confirm: 'Are you sure?', remote: true}, class:"text-danger" %>
-    </tr>
+<tr id="projectRow_<%= project.id %>">
+  <td><%= project.title %></td>
+  <td>
+    <% if can? :manage, @project %>
+    <%= link_to "edit", edit_project_path(project), class:"text-success",  data: {bs_toggle: 'modal', bs_target: '#updateProject', remote: true} %>
+    <%# <td><%= link_to 'edit', edit_project_path(project), class: "text-success" %>
+  <td>
+    <%= link_to 'delete', project, method: :delete, data: {confirm: 'Are you sure?', remote: true}, class:"text-danger" %>
+  </td>
+  <% end %>
+</tr>

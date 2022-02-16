@@ -1,9 +1,8 @@
 class ProjectsController < RoleDashboardsController
   before_action :authenticate_user!
-  load_and_authorize_resource
   # authorize_resource
   before_action :set_project, only: %i[show edit update destroy]
-  before_action :set_authorization
+  before_action :set_authorization, only: %i[edit update destroy show new create]
 
   def index
     @projects = Project.all.order(title: :asc)
@@ -58,7 +57,7 @@ class ProjectsController < RoleDashboardsController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description)
+    params.require(:project).permit(:title, :description, :project_id)
   end
 
   def set_authorization

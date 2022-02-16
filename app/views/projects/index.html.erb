@@ -1,9 +1,10 @@
-<% if can? :manage, @current_user %>
 <p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <% if can? :manage, @project %>
       <%= link_to "Add PROJECT", new_project_path,id: "new_link", class: "btn btn-success",  data: {bs_toggle: 'modal', bs_target: '#updateProject', remote: true} %>
+      <% end %>
       <h2 class="text-cener py-5"> Project</h2>
       <table class="table table-sm">
         <thead>
@@ -56,4 +57,3 @@
     </div>
   </div>
 </div>
-<% end %>
