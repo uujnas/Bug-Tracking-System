@@ -16,7 +16,7 @@ class BugsController < RoleDashboardsController
   def edit; end
 
   def create
-    @bug = current_user.bugs.create(bug_params)
+    @bug = Bug.where(user_id: current_user).create(bug_params)
     if @bug.save
       redirect_to bug_url(@bug), notice: 'bug was successfully created'
     else
