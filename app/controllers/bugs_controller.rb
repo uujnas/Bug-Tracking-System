@@ -5,7 +5,7 @@ class BugsController < RoleDashboardsController
 
 
   def index
-    @bugs = Bug.all
+    @bugs = Bug.all.group_by(&:project)
     @assign_bug = AssignBug.new
     # @bug = current_user.bugs.build
   end

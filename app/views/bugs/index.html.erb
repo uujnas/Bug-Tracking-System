@@ -18,20 +18,25 @@
         </thead>
         <tbody>
           <tr>
-            <% @bugs.each_with_index do |bug,index|%>
+            <% @bugs.each_with_index do |(project_bug,bug),index|%>
             <th scope="row"><%= index+1 %></th>
-            <td><%= bug.title %></td>
-            <td><%= bug.description %></td>
-            <td><%= bug.project.title %></td>
-            <% if can? :read, bug %>
-            <td><%= link_to 'edit', edit_bug_path(bug), class: "text-success" %>
+            <td><%= project_bug.title %></td>
+            <% bug.each do |bug|%>
+          <tr>
+            <td></td>
+            <td>
+              <%= bug.title %>
+              <% if can? :read, bug %>
+            <td><%= link_to 'edit', edit_bug_path(bug), class: "text-success" %></td>
             <td>
               <%= link_to 'delete', bug, method: :delete, class: "text-danger", data: {confirm: "Are you sure you want to delete #{bug.title}?" } %>
             </td>
             <% end %>
+            </td>
           </tr>
+          <% end%>
           <% end %>
-
+          </tr>
         </tbody>
       </table>
     </div>
