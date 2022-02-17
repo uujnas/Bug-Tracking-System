@@ -12,8 +12,9 @@ class AssignBugsController < RoleDashboardsController
   def create
     @assign_bug = AssignBug.create!(assign_bugs_params)
     @user = User.find(@assign_bug.user_id)
+    @bug = Bug.find(@assign_bug.bug_id)
     if @assign_bug.save
-      AssignBugMailer.assign_bug_developer(@user).deliver
+      AssignBugMailer.assign_bug_developer(@user, @bug).deliver
       redirect_to bugs_path, notice: 'Bug is successfully assigned'
     else
       render :new, alert: 'Unable to assign'
