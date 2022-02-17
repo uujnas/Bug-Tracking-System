@@ -1,0 +1,33 @@
+<% if @bug.errors.any? %>
+<%= @bug.errors.full_messages %>
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="p-3">Add bug</h2>
+      <%= form_for @bug do |f| %>
+      <div class="col-md-6 col-lg-6 pt-2">
+        <%= f.label :title, "Title of bug" %>
+      </div>
+      <div class="col-md-6 col-lg-6 py-2">
+        <%= f.text_field :title,class: "form-control", placeholder: "bug name goes here" %>
+      </div>
+      <div class="col-md-6 col-lg-6 pt-2">
+        <%= f.label :project_id, "Select Project" %>
+      </div>
+      <div class="col-md-6 col-lg-6 py-2">
+        <%= f.select :project_id, options_for_select(Project.all.map{|c|[c.title,c.id]}) %>
+      </div>
+      <div class="col-md-6 col-lg-6 pt-2">
+        <%= f.label :description, "bug description" %>
+      </div>
+      <div class="col-md-6 col-lg-6 py-2">
+        <%= f.text_area :description,class: "form-control",rows: "5", placeholder: "bug description" %>
+      </div>
+      <div class="col-md-6 col-lg-6 py-2">
+        <%= f.submit "Add", class: "btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,8 @@
 class ProjectsController < RoleDashboardsController
   before_action :authenticate_user!
+  # authorize_resource
   before_action :set_project, only: %i[show edit update destroy]
+  before_action :set_authorization, only: %i[edit update destroy show new create]
 
   def index
     @projects = Project.all.order(title: :asc)
@@ -16,7 +18,7 @@ class ProjectsController < RoleDashboardsController
   def edit; end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_user.project.create(project_params)
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Successfully created' }
@@ -55,7 +57,11 @@ class ProjectsController < RoleDashboardsController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description)
+    params.require(:project).permit(:title, :description, :project_id)
+  end
+
+  def set_authorization
+    authorize! :read, @current_user
   end
 
 end
