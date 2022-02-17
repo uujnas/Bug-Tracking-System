@@ -1,4 +1,4 @@
-class AssignBugsController < ApplicationController
+class AssignBugsController < RoleDashboardsController
 
   def index
     @assign_bugs = AssignBug.all

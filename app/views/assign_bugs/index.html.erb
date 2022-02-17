@@ -1,0 +1,12 @@
+<table>
+<thead>
+</thead>
+<% @assign_bugs.each do |bug| %>
+  <tr>
+    <% if current_user.id == bug.user.id %>
+   <td> <%= bug.bug.title %></td>
+    <% end %>
+  </tr>
+
+<% end %>
+</table>
