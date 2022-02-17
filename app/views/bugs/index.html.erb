@@ -11,8 +11,8 @@
           <tr>
             <th scope="col">SN</th>
             <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Project Title</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
             <th colspan="2"></th>
           </tr>
         </thead>
@@ -29,6 +29,28 @@
               <% if can? :read, bug %>
             <td><%= link_to 'edit', edit_bug_path(bug), class: "text-success" %></td>
             <td>
+              <%= link_to "Assign user", new_project_path, class: "text-primary",  data: {bs_toggle: 'modal', bs_target: "#bug#{bug.id}"} %>
+            </td>
+            <!-- Modal -->
+            <div class="modal fade" id="bug<%= bug.id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <%= render partial: "assign_bugs/form", locals: {bug: bug}%>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <td>
               <%= link_to 'delete', bug, method: :delete, class: "text-danger", data: {confirm: "Are you sure you want to delete #{bug.title}?" } %>
             </td>
             <% end %>
@@ -42,3 +64,6 @@
     </div>
   </div>
 </div>
+
+
+<%# <%= render partial: 'modal', locals: {modal: @bug}%> 
