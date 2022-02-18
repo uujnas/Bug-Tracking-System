@@ -47,7 +47,7 @@ class BugsController < RoleDashboardsController
   end
 
   def bug_params
-    params.require(:bug).permit(:title, :description, :user_id, :project_id)
+    params.require(:bug).permit(:title, :description, :user_id, :project_id, :status)
   end
 
   def set_authorization

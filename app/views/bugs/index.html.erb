@@ -24,8 +24,8 @@
             <% bug.each do |bug|%>
           <tr>
             <td></td>
-            <td>
-              <%= bug.title %>
+            <td><%= bug.title %></td>
+              <td><%= bug.status %></td>
               <% if can? :read, bug %>
             <td><%= link_to 'edit', edit_bug_path(bug), class: "text-success" %></td>
             <td>
