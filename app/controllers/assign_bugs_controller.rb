@@ -1,5 +1,4 @@
 class AssignBugsController < RoleDashboardsController
-
   def index
     @assign_bugs = AssignBug.all
   end
@@ -8,6 +7,10 @@ class AssignBugsController < RoleDashboardsController
     @assign_bug = AssignBug.new
   end
 
+  def edit
+    @assign_bug = AssignBug.find(params[:id])
+    @assign_bug = Bug.find(@assign_bug.bug_id)
+  end
 
   def create
     @assign_bug = AssignBug.create!(assign_bugs_params)

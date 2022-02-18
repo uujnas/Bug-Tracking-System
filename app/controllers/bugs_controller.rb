@@ -3,7 +3,6 @@ class BugsController < RoleDashboardsController
   before_action :set_bug, only: %i[show edit update destroy]
   before_action :set_authorization, only: %i[edit update destroy show new create]
 
-
   def index
     @bugs = Bug.all.group_by(&:project)
     @assign_bug = AssignBug.new
@@ -53,5 +52,4 @@ class BugsController < RoleDashboardsController
   def set_authorization
     authorize! :read, @current_user
   end
-
 end
