@@ -4,6 +4,7 @@ class BugsController < RoleDashboardsController
   before_action :set_authorization, only: %i[edit update destroy show new create]
 
   def index
+    StatusJob.perform_in(1.minutes,'bob',5)
     @bugs = Bug.all.group_by(&:project)
     @assign_bug = AssignBug.new
     # @bug = current_user.bugs.build

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => "/sidekiq"
   root 'dashboards#index'
   devise_for :users, controllers: {
     confirmations: 'confirmations'
