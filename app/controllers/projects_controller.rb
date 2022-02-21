@@ -5,6 +5,7 @@ class ProjectsController < RoleDashboardsController
   before_action :set_authorization, only: %i[edit update destroy show new create]
 
   def index
+    FirstJob.perform_later 1, 2, 3
     @projects = Project.all.order(title: :asc)
     @project = Project.new
   end
