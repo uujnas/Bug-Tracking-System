@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="p-3">Change bug status</h2>
+      <%= form_for @assign_bug do |f| %>
+      <div class="col-md-6 col-lg-6 py-2">
+        Set bug status: <%= f.select :status, options_for_select(Bug.statuses.keys.map{|c|[c.titleize,c]}) %>
+      </div>
+      <div class="col-md-6 col-lg-6 py-2">
+        <%= f.submit "Add", class: "btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  <div>
+</div>

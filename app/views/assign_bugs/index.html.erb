@@ -4,10 +4,11 @@
       <h3><%= current_user.user_name.capitalize %> You need to fix !!</h3>
       <% @assign_bugs.each do |bug| %>
       <% if current_user.id == bug.user.id %>
-      <h6><%= bug.bug.title %></h6>
-      <p><%= bug.bug.description %><p>
-          <% end %>
-          <% end %>
+          <h4><%= bug.bug.title %></h4>
+          <p class="text-dark">[<span><%= bug.bug.status %></span>]<%= bug.bug.description %><p>
+            <p><%= link_to 'edit', edit_assign_bug_path(bug), class: "text-success" %></p>
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>

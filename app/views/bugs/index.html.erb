@@ -24,11 +24,11 @@
             <% bug.each do |bug|%>
           <tr>
             <td></td>
-            <td>
-              <%= bug.title %>
-              <% if can? :read, bug %>
+            <td><%= bug.title %></td>
+            <td><%= bug.status %></td>
             <td><%= link_to 'edit', edit_bug_path(bug), class: "text-success" %></td>
             <td>
+              <% if can? :read, bug %>
               <%= link_to "Assign user", new_project_path, class: "text-primary",  data: {bs_toggle: 'modal', bs_target: "#bug#{bug.id}"} %>
             </td>
             <!-- Modal -->
@@ -64,6 +64,4 @@
     </div>
   </div>
 </div>
-
-
-<%# <%= render partial: 'modal', locals: {modal: @bug}%> 
+<%# <%= render partial: 'modal', locals: {modal: @bug}%>

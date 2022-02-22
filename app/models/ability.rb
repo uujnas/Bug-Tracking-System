@@ -8,8 +8,10 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.project_manager?
-      can :manage, Bug 
+      can :manage, Bug
       # can :manage, Project, user: current_user
+    else
+      can :update, Bug
       can :read, :all
     end
 
