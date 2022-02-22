@@ -7,7 +7,8 @@
       <div class="col-md-6 col-lg-6 py-2">
         Select User :
         <%= f.select :user_id, options_for_select(User.all.map{|c|[c.user_name,c.id]}), class: "form-control"%>
-      <%= f.hidden_field :bug_id, value: bug %>
+      <%= f.hidden_field :bug_id, value: bug.id %>
+         puts "<%= bug.title %>"
       </div>
       <div class="col-md-6 col-lg-6 py-2">
         <%= f.submit "Assign ", class: "btn btn-outline-success btn-sm " %>

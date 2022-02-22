@@ -10,7 +10,7 @@ class AssignBugsController < ApplicationController
 
 
   def create
-    @assign_bug = AssignBug.create(assign_bugs_params)
+    @assign_bug = AssignBug.create!(assign_bugs_params)
     if @assign_bug.save
       redirect_to bugs_path, notice: 'Bug is successfully assigned'
     else
