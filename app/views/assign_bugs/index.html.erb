@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3><%= current_user.user_name.capitalize %> You need to fix !!</h3>
+      <% @assign_bugs.each do |bug| %>
+      <% if current_user.id == bug.user.id %>
+      <h6><%= bug.bug.title %></h6>
+      <p><%= bug.bug.description %><p>
+          <% end %>
+          <% end %>
+    </div>
+  </div>
+</div>
